@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="sr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>STREETLINE — Patike & Streetwear</title>
+<style>
+:root{--bg:#f5f4f0;--ink:#171717;--muted:#777;--accent:#d8ff3e;--line:#deddd7}
+*{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--ink);font-family:Arial,Helvetica,sans-serif}
+header{height:76px;display:flex;align-items:center;justify-content:space-between;padding:0 6%;border-bottom:1px solid var(--line);background:#f5f4f0;position:sticky;top:0;z-index:5}
+.logo{font-weight:950;letter-spacing:-1.5px;font-size:25px}.logo span{color:#777}
+nav{display:flex;gap:26px}nav a{color:var(--ink);text-decoration:none;font-size:13px;font-weight:700}
+.cart{border:1px solid var(--ink);border-radius:30px;padding:11px 16px;background:transparent;font-weight:800;cursor:pointer}
+.hero{margin:26px auto 0;width:88%;min-height:440px;background:#171717;color:white;display:grid;grid-template-columns:1fr 1fr;overflow:hidden}
+.hero-copy{padding:70px 8%;display:flex;flex-direction:column;justify-content:center;align-items:flex-start}
+.kicker{font-size:11px;letter-spacing:3px;color:var(--accent);font-weight:800}
+h1{font-size:clamp(44px,6vw,78px);line-height:.92;letter-spacing:-5px;margin:20px 0}
+.hero p{color:#c6c6c6;max-width:360px;line-height:1.6}
+.cta{display:inline-block;background:var(--accent);color:#111;text-decoration:none;font-weight:900;padding:15px 22px;margin-top:18px}
+.hero-art{background:linear-gradient(135deg,#c6c6c0,#777);display:flex;align-items:center;justify-content:center;position:relative;min-height:350px}
+.hero-art img{width:100%;height:100%;object-fit:cover;position:absolute;inset:0;mix-blend-mode:multiply}
+.hero-word{position:relative;font-size:clamp(38px,5vw,70px);font-weight:950;letter-spacing:-5px;color:#171717;transform:rotate(-9deg);text-align:center}
+.strip{display:flex;justify-content:space-around;padding:20px 6%;font-size:11px;font-weight:900;letter-spacing:1.5px;border-bottom:1px solid var(--line)}
+section.products{width:88%;margin:70px auto}
+.section-top{display:flex;justify-content:space-between;align-items:end;margin-bottom:24px}
+h2{font-size:36px;letter-spacing:-2px;margin:0}.section-top p{color:var(--muted);font-size:13px}
+.filters{display:flex;gap:9px;flex-wrap:wrap;margin:20px 0}
+.filter{border:1px solid var(--line);background:transparent;padding:10px 15px;border-radius:30px;cursor:pointer;font-weight:700}
+.filter.active{background:var(--ink);color:white;border-color:var(--ink)}
+.grid{display:grid;grid-template-columns:repeat(4,1fr);gap:16px}
+.product{background:#fff;padding:10px;position:relative}
+.product-image{height:230px;background:#e9e8e3;display:flex;align-items:center;justify-content:center;overflow:hidden}
+.product-image img{width:100%;height:100%;object-fit:cover}
+.product h3{font-size:14px;margin:14px 4px 5px}.meta{display:flex;justify-content:space-between;margin:0 4px 10px;font-size:13px;font-weight:800}
+.add{width:100%;padding:12px;background:#171717;color:white;border:0;font-weight:800;cursor:pointer}.add:hover{background:#3a3a3a}
+.tag{position:absolute;top:18px;left:18px;background:var(--accent);font-size:10px;font-weight:900;padding:6px 8px}
+.about{background:#e7e6df;padding:55px 8%;display:flex;justify-content:space-between;gap:30px;align-items:center}
+.about h2{max-width:400px}.about p{max-width:440px;color:#555;line-height:1.7}
+footer{background:#171717;color:white;padding:35px 6%;display:flex;justify-content:space-between;font-size:12px}
+.drawer{position:fixed;inset:0;background:#0008;z-index:10;display:none;justify-content:flex-end}.drawer.open{display:flex}
+.panel{width:min(420px,100%);background:#f5f4f0;height:100%;padding:25px;overflow:auto}
+.panel-head{display:flex;justify-content:space-between;align-items:center}.close{border:0;background:none;font-size:25px;cursor:pointer}
+.cart-row{display:flex;justify-content:space-between;border-bottom:1px solid var(--line);padding:15px 0;font-size:14px}
+.total{font-size:20px;font-weight:900;margin:25px 0}
+.checkout{width:100%;padding:15px;background:var(--accent);border:0;font-weight:900;cursor:pointer}
+.note{font-size:11px;color:#777;line-height:1.5}
+@media(max-width:800px){nav{display:none}.hero{grid-template-columns:1fr}.hero-copy{padding:50px 8%}.hero-art{min-height:230px}.grid{grid-template-columns:repeat(2,1fr)}.product-image{height:180px}.strip{font-size:9px;padding:15px 2%}.about{display:block}footer{gap:15px;flex-direction:column}}
+@media(max-width:430px){.grid{gap:9px}.product-image{height:145px}section.products{width:92%}.hero{width:92%}h2{font-size:29px}}
+</style>
+</head>
+<body>
+<header><div class="logo">STREET<span>LINE.</span></div><nav><a href="#shop">PRODAVNICA</a><a href="#about">O NAMA</a></nav><button class="cart" onclick="openCart()">KORPA (<span id="count">0</span>)</button></header>
+<main>
+<div class="hero"><div class="hero-copy"><div class="kicker">NEW DROP / 2026</div><h1>OWN<br>YOUR<br>STYLE.</h1><p>Patike i streetwear komadi za svaki dan. Izaberi svoj fazon i nosi ga samouvereno.</p><a class="cta" href="#shop">POGLEDAJ KOLEKCIJU ↗</a></div><div class="hero-art"><div class="hero-word">STREET<br>ESSENTIALS</div></div></div>
+<div class="strip"><span>★ STREET CULTURE</span><span>★ EVERYDAY COMFORT</span><span>★ YOUR STYLE</span></div>
+<section class="products" id="shop"><div class="section-top"><div><div class="kicker" style="color:#777">IZDVOJENO</div><h2>SHOP THE DROP.</h2></div><p>Odabrani komadi / 2026</p></div>
+<div class="filters"><button class="filter active" onclick="filterProducts('Sve',this)">Sve</button><button class="filter" onclick="filterProducts('Patike',this)">Patike</button><button class="filter" onclick="filterProducts('Odeća',this)">Odeća</button><button class="filter" onclick="filterProducts('Dodaci',this)">Dodaci</button></div>
+<div class="grid" id="grid"></div></section>
+<section class="about" id="about"><div><div class="kicker" style="color:#777">STREETLINE / ABOUT</div><h2>MANJE PRAVILA.<br>VIŠE STILA.</h2></div><p>STREETLINE je koncept prodavnice inspirisan streetwear kulturom. Ovaj sajt je demo verzija: proizvodi, cene i korpa služe za prikaz dizajna, bez stvarne naplate ili slanja porudžbina.</p></section>
+</main><footer><strong>STREETLINE.</strong><span>DEMO ONLINE STORE · 2026</span><span>INSTAGRAM · CONTACT</span></footer>
+<div class="drawer" id="drawer" onclick="if(event.target===this)closeCart()"><div class="panel"><div class="panel-head"><h2>Tvoja korpa</h2><button class="close" onclick="closeCart()">×</button></div><div id="cartItems"></div><div class="total" id="total">Ukupno: 0 RSD</div><button class="checkout" onclick="alert('Ovo je demo prodavnica — kupovina i plaćanje nisu aktivni.')">NASTAVI NA PORUDŽBINU</button><p class="note">Demo korpa. Nema stvarne kupovine, naplate ni slanja proizvoda.</p></div></div>
+<script>
+const products=[
+{name:'Air Motion Runner',cat:'Patike',price:12990,tag:'BESTSELLER',img:'https://images.unsplash.com/photo-1542291026-7eec264c27ff?w=700'},
+{name:'Classic Street Low',cat:'Patike',price:9990,tag:'NEW',img:'https://images.unsplash.com/photo-1549298916-b41d501d3772?w=700'},
+{name:'Urban Oversized Hoodie',cat:'Odeća',price:6490,tag:'',img:'https://images.unsplash.com/photo-1556821840-3a63f95609a7?w=700'},
+{name:'Everyday Cap',cat:'Dodaci',price:2490,tag:'',img:'https://images.unsplash.com/photo-1588850561407-ed78c282e89b?w=700'},
+{name:'Retro Court Sneakers',cat:'Patike',price:11490,tag:'',img:'https://images.unsplash.com/photo-1525966222134-fcfa99b8ae77?w=700'},
+{name:'Essential Tee',cat:'Odeća',price:2990,tag:'NEW',img:'https://images.unsplash.com/photo-1521572163474-6864f9cf17ab?w=700'},
+{name:'Crossbody Bag',cat:'Dodaci',price:3790,tag:'',img:'https://images.unsplash.com/photo-1553062407-98eeb64c6a62?w=700'},
+{name:'Daily Zip Hoodie',cat:'Odeća',price:7290,tag:'',img:'https://images.unsplash.com/photo-1578681994506-b8f463449011?w=700'}
+];
+let cart=[];
+const money=n=>n.toLocaleString('sr-RS')+' RSD';
+function render(list=products){document.getElementById('grid').innerHTML=list.map((p,i)=>`<article class="product">${p.tag?`<span class="tag">${p.tag}</span>`:''}<div class="product-image"><img src="${p.img}" alt="${p.name}" loading="lazy"></div><h3>${p.name}</h3><div class="meta"><span>${p.cat}</span><span>${money(p.price)}</span></div><button class="add" onclick="addToCart('${p.name}')">DODAJ U KORPU +</button></article>`).join('')}
+function filterProducts(cat,btn){document.querySelectorAll('.filter').forEach(x=>x.classList.remove('active'));btn.classList.add('active');render(cat==='Sve'?products:products.filter(p=>p.cat===cat))}
+function addToCart(name){cart.push(products.find(p=>p.name===name));document.getElementById('count').textContent=cart.length;renderCart()}
+function renderCart(){document.getElementById('cartItems').innerHTML=cart.length?cart.map((p,i)=>`<div class="cart-row"><span>${p.name}</span><strong>${money(p.price)}</strong><button onclick="removeItem(${i})">×</button></div>`).join(''):'<p>Korpa je trenutno prazna.</p>';document.getElementById('total').textContent='Ukupno: '+money(cart.reduce((s,p)=>s+p.price,0))}
+function removeItem(i){cart.splice(i,1);document.getElementById('count').textContent=cart.length;renderCart()}
+function openCart(){document.getElementById('drawer').classList.add('open');renderCart()}function closeCart(){document.getElementById('drawer').classList.remove('open')}
+render();
+</script>
+</body></html>
